@@ -2314,43 +2314,8 @@ html {
  * Remove default margin.
  */
 body {
-   cursor: url('http://ionicframework.com/img/finger.png'), auto;
-}
-
-.dark {
-  background-color: #3f4041 !important;
-  color: #ffffff;
-  .scroll-content {
-    background-color: #3f4041 !important;
-  }
-  .item {
-    background-color: $dark;
-    border: none;
-    border-top: 1px solid #464646;
-    border-bottom: 2px solid #333333;
-    padding: 20px;
-    color: #F0F1F1;
-    max-height: none;
-
-    &:last-child {
-      border-bottom: 1px solid #333333;
-    }
-    &.current{ background-color:darken( $dark, 10% )   !important;
-       border-top: 1px solid #464646 !important;
-    border-bottom: 2px solid #333333 !important;
-      p,h3{opacity: .7;}
-            }
-  }
-  h2,
-  h3,
-  p,
-  a{
-    color: #F0F1F1;
-  }
-}
-.dark-head {
-  text-decoration: none;
-}
+  margin: 0;
+  line-height: 1; }
 
 /**
  * Remove default outlines.
@@ -4678,7 +4643,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
     color: #fff;
     text-align: center;
     text-overflow: ellipsis;
-    font-size: 20px; }
+    font-size: 15px; }
     .loading-container .loading h1, .loading-container .loading h2, .loading-container .loading h3, .loading-container .loading h4, .loading-container .loading h5, .loading-container .loading h6 {
       color: #fff; }
 
@@ -4687,8 +4652,8 @@ ion-tabs.tabs-color-active-dark .tab-item {
  * --------------------------------------------------
  */
 .item {
-  border-color: transparent;
-  background:transparent;
+  border-color: #ddd;
+  background-color: #fff;
   color: #444;
   position: relative;
   z-index: 2;
@@ -4834,7 +4799,7 @@ a.item {
   z-index: 2;
   padding: 16px 49px 16px 16px;
   border: none;
-  background:transparent; }
+  background-color: #fff; }
 
 a.item-content {
   display: block;
@@ -6196,7 +6161,6 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
   box-shadow: none; }
 
 .item-toggle, .item-toggle.item-complex .item-content {
-  background: transparent;
   padding-right: 99px; }
 
 .item-toggle.item-complex {
@@ -6297,7 +6261,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
   left: -9999px; }
   .item-radio input:checked ~ .item-content {
     /* style the item content when its checked */
-    background: #transparent; }
+    background: #f7f7f7; }
   .item-radio input:checked ~ .radio-icon {
     /* show the checkmark icon when its checked */
     visibility: visible; }

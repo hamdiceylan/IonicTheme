@@ -1,34 +1,35 @@
-<ion-view view-title="">
+<ion-view view-title="Canlı Sonuçlar" style="background-color:green; color:white;">
   <ion-content>
   <div class="list">
 
-  <div class="item item-divider">
-    Lig Adı
-  </div>
+   <ion-refresher pulling-text="Yenilemek için kaydırın"
+    on-refresh="doRefresh()">
+  </ion-refresher>
 
-  <a class="item" href="#">
-    Skorlar
-  </a>
-  <a class="item" href="#">
-    Skorlar
-  </a>
-  <a class="item" href="#">
-    Skorlar
-  </a>
-    <div class="item item-divider">
-    Lig Adı
+  <div ng-repeat="oyun in oyunlar">
+  <div class="item item-divider" style="background-color:green; color:white;">
+    {{oyun._area_name}} - {{oyun._name}} 
   </div>
+    <ion-list>
+      <ion-item ng-if="skor._minute" ng-repeat="skor in oyun.season.round.match" style="padding:1px;">
+      <div class="row"  style="font-size:12px;">
+        <div class="col col-10" style="align:center;">{{skor._minute}}</div>
+        <div class="col col-35  ">{{skor._team_A_name | limitTo : 19}}</div>
+        <div class="col col-20" style="align:center;">{{skor._fs_A}} - {{skor._fs_B}}</div>
+        <div class="col col-35">{{skor._team_B_name | limitTo : 19}}</div>
+      </div>
+    </ion-item>
+    <ion-item  ng-if="groupskor._minute" ng-repeat="groupskor in oyun.season.round.group.match" style="padding:1px;">
+          <div class="row" style="font-size:12px;">
+        <div class="col col-10" style="align:center;">{{groupskor._minute}}</div>
+        <div class="col col-35  ">{{groupskor._team_A_name | limitTo : 19}}</div>
+        <div class="col col-20" style="align:center;">{{groupskor._fs_A}} - {{groupskor._fs_B}}</div>
+        <div class="col col-35">{{groupskor._team_B_name | limitTo : 19}}</div>
+      </div>
+    </ion-item>
+    </ion-list>
 
-  <a class="item" href="#">
-    Skorlar
-  </a>
-  <a class="item" href="#">
-    Skorlar
-  </a>
-  <a class="item" href="#">
-    Skorlar
-  </a>
-</div>
-  </ion-content>
+  </div>
+  </ion-content>  
 </ion-view>
 

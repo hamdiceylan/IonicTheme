@@ -36,7 +36,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/liveScore',
     views: {
       'menuContent': {
-        templateUrl: 'templates/liveScore.html'
+        templateUrl: 'templates/liveScore.html',
+        controller :'LiveScoreCtrl'
       }
     }
   })
@@ -60,7 +61,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/coupons',
     views: {
       'menuContent': {
-        templateUrl: 'templates/coupons.html'
+        templateUrl: 'templates/coupons.html',
+        controller: 'CouponCtrl'  
       }
     }
   })

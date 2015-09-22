@@ -1,6 +1,28 @@
-<ion-view view-title="">
+<ion-view view-title="Banko Kuponlar" style="background-color:green; color:white;">
   <ion-content>
-    <h1>Hazır Kuponlar</h1>
-  </ion-content>
+  <div class="list">
+
+   <ion-refresher pulling-text="Yenilemek için kaydırın"
+    on-refresh="doRefresh()">
+  </ion-refresher>
+
+  <div ng-repeat="coupon in coupons">
+  <div class="item item-divider" style="background-color:green; color:white;">
+    {{coupon.Name}} 
+  </div>
+    <ion-list>
+      <ion-item ng-repeat="match in coupon.Matchs" style="padding:1px;">
+      <div class="row"  style="font-size:12px;">
+        <div class="col col-10" style="align:center;">{{match.Code}}</div>
+        <div class="col col-10" style="align:center;">{{match.Leauge}}</div>
+        <div class="col col-50" style="align:center;">{{match.Teams | limitTo : 20}}</div>
+        <div class="col col-20" style="text-align:center; background-color:orange; color:white;">{{match.BetScore}}</div>
+        <div class="col col-10" style="align:center;">{{match.Rate}}</div>
+      </div>
+    </ion-item>
+    </ion-list>
+
+  </div>
+  </ion-content>  
 </ion-view>
 

@@ -41,16 +41,53 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
+.controller('CouponCtrl', function($scope,$http) {
+  
+    $http.get('http://api.webron.social/TFF/GetCoupouns').
+      then(function(response) { 
+         $scope.coupons = response.data;
+      }, function(response) {
+     });
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+    $scope.doRefresh = function(){
+      $http.get('http://api.webron.social/TFF/GetCoupouns').
+        then(function(response) { 
+          $scope.coupons = response.data;
+          console.log(response.data); 
+        }, function(response) {
+      }).finally(function() {
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+    } 
+})
+.controller('LiveScoreCtrl', function($scope, $stateParams,$http,$ionicLoading) {
+   $ionicLoading.show({
+      template: 'loading'
+   });
+
+   $http.get('http://soccer.acreph.com/?user=gunesbjk&password=848881&get=matches_live&minutes=yes&detailed=no&now_playing=yes').
+      then(function(response) { 
+      var x2js = new X2JS();
+      var matchObject = x2js.xml_str2json(response.data);
+      console.log(matchObject);
+      $ionicLoading.hide(); 
+      $scope.oyunlar = matchObject.acreph.competition; 
+      console.log($scope.oyunlar);
+      }, function(response) {
+   });
+
+    $scope.doRefresh = function(){
+
+   $http.get('http://soccer.acreph.com/?user=gunesbjk&password=848881&get=matches_live&minutes=yes&detailed=no&now_playing=yes').
+      then(function(response) { 
+          var x2js = new X2JS();
+          var matchObject = x2js.xml_str2json(response.data);
+      }, function(response) {
+      })  .finally(function() {
+       // Stop the ion-refresher from spinning
+       $scope.$broadcast('scroll.refreshComplete');
+     });;
+
+    } 
+
 });
